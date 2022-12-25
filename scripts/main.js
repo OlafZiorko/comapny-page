@@ -1,23 +1,15 @@
-const togglerMenu = document.querySelector(".toggler");
-const mobileMenu = document.querySelector(".main__navigation");
-const closeMenu = document.querySelector(".navbar__toggler--close");
+const toggleMenu = document.querySelector(".toggleMenu");
+const headerNavigation = document.querySelector(".navigation__list");
+let cards = document.querySelectorAll(".card");
 
-togglerMenu.addEventListener("click", () => {
-  mobileMenu.classList.toggle("visible");
+cards.forEach((card) => {
+  card.addEventListener("click", () => {
+    let cardBody = card.querySelector(".card__body");
+    cardBody.classList.toggle(".active");
+  });
 });
 
-let panelTitle = document.querySelectorAll(".panel--title");
-let container = document.querySelectorAll(".panel__container");
-
-panelTitle.forEach(function (header, index) {
-  header.addEventListener("click", function () {
-    container.forEach(function (panel) {
-      panel.classList.remove("active");
-    });
-    panelTitle.forEach(function (header) {
-      header.classList.remove("active");
-    });
-    panelTitle[index].classList.add("active");
-    container[index].classList.add("active");
-  });
+toggleMenu.addEventListener("click", () => {
+  toggleMenu.classList.toggle("open");
+  headerNavigation.classList.toggle("show");
 });
